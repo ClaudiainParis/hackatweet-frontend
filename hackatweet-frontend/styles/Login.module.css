@@ -1,0 +1,42 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(4, 4, 35);
+    min-height: 100vh;
+    padding: 4rem 0;
+  }
+
+  .title {
+    color: white;
+    line-height: 1.15;
+    font-size: 4rem;
+  }
+  
+    .p {
+      color: white;
+  }
+
+  .h3 {
+    color: white;
+  }
+
+  .signInButton{
+    background-color: white;
+    padding: 8px 40px;
+    margin: none;
+    border-radius: 15px;
+  }
+
+  .signUpButton {
+    background-color: rgb(48, 121, 239);
+    color: white;
+    padding: 8px 40px;
+    margin: none;
+    border-radius: 15px;
+  }
+
+  .icon {
+     color: white; 
+  }
