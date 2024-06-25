@@ -5,6 +5,11 @@ import styles from '../styles/Tweet.module.css';
 function Tweet() {
 
     const [tweet, setTweet] = useState('')
+    const [tweetCount, setTweetCount] = useState(0);
+
+   
+
+    // const charCounter = tweetCount;
 
     const handleTweet = () => {
         fetch('http://localhost:3000/tweets/newtweet', {
@@ -15,10 +20,12 @@ function Tweet() {
 			.then(data => {
                 console.log(data)
                 console.log(tweet)
+                console.log(tweet.length)
 				if (!data.result) {
                     console.log('write a tweet')
                 } else {
 					setTweet('');
+                    setTweetCount(0)
                 }
 				}
 			);
@@ -28,7 +35,9 @@ function Tweet() {
     return(
         <div className={styles.tweetContainer}>
 				<div className={styles.tweetSection}>
-					<input type="text" placeholder="What's up ?" id="tweet" onChange={(e) => setTweet(e.target.value)} value={tweet} />
+					<input type="text" placeholder="What's up ?" id="tweet" maxLength='280'
+                    onChange={(e) => {setTweet(e.target.value) ; setTweetCount(tweet.length)}} value={tweet} />
+                    <p>{tweetCount}/280</p>
 					<button id="tweetButton" onClick={() => handleTweet()}>Tweet</button>
 				</div>
 			</div>
