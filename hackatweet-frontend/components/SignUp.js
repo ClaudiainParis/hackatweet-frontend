@@ -36,13 +36,13 @@ function SignUp() {
 
     return (
         <div className={styles.registerContainer}>
-        
+        {/* add tweeter reversed symbol and cross symbol to close modal */}
             <div className={styles.registerSection}>
-                <p>Sign-up</p>
-                <input type="text" placeholder="First name" id="signUpfirstname" onChange={(e) => setSignUpfirstname(e.target.value)} value={signUpfirstname} />
+                <p>Create your Hackatweet account</p>
+                <input type="text" placeholder="Firstname" id="signUpfirstname" onChange={(e) => setSignUpfirstname(e.target.value)} value={signUpfirstname} />
                 <input type="text" placeholder="Username" id="signUpUsername" onChange={(e) => setSignUpUsername(e.target.value)} value={signUpUsername} />
                 <input type="password" placeholder="Password" id="signUpPassword" onChange={(e) => setSignUpPassword(e.target.value)} value={signUpPassword} />
-                <button id="connection" onClick={() => handleSignUp()}>Connect</button>
+                <button id="connection" onClick={() => handleSignUp()}>Sign up</button>
             </div>
         </div>
 )

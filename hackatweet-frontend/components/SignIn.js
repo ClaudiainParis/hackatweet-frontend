@@ -12,7 +12,7 @@ function SignIn() {
 	// const users = useSelector((state) => state.users.value);
 
 
-    const [signInfirstname, setSignInfirstname] = useState('');
+    // const [signInfirstname, setSignInfirstname] = useState('');
 	const [signInUsername, setSignInUsername] = useState('');
 	const [signInPassword, setSignInPassword] = useState('');
 
@@ -20,18 +20,18 @@ function SignIn() {
 		fetch('http://localhost:3000/users/signin', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ firstname: signInfirstname, username: signInUsername, password: signInPassword }),
+			body: JSON.stringify({username: signInUsername, password: signInPassword }),
 		}).then(response => response.json())
 			.then(data => {
                 console.log(data)
-                console.log(signInfirstname)
+                // console.log(signInfirstname)
                 console.log(signInUsername)
                 console.log(signInPassword)
 				if (!data.result) {
                     console.log('false')
                 } else {
 					dispatch(login({username: signInUsername}));
-                    setSignInfirstname('');
+                    // setSignInfirstname('');
 					setSignInUsername('');
 					setSignInPassword('');
                 }
@@ -42,13 +42,13 @@ function SignIn() {
 
 return (
 			<div className={styles.registerContainer}>
-			
+			{/* add tweeter reversed symbol and cross symbol to close modal */}
 				<div className={styles.registerSection}>
-					<p>Sign-in</p>
-                    <input type="text" placeholder="First name" id="signInfirstname" onChange={(e) => setSignInfirstname(e.target.value)} value={signInfirstname} />
+					<p>Connect to Hackatweet</p>
+                    {/* <input type="text" placeholder="First name" id="signInfirstname" onChange={(e) => setSignInfirstname(e.target.value)} value={signInfirstname} /> */}
 					<input type="text" placeholder="Username" id="signInUsername" onChange={(e) => setSignInUsername(e.target.value)} value={signInUsername} />
 					<input type="password" placeholder="Password" id="signInPassword" onChange={(e) => setSignInPassword(e.target.value)} value={signInPassword} />
-					<button id="connection" onClick={() => handleConnection()}>Connect</button>
+					<button id="connection" onClick={() => handleConnection()}>Sign in</button>
 				</div>
 			</div>
 )
