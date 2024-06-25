@@ -6,8 +6,8 @@ import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 function LastTweets(props) {
 
-    const [tweetId, setTweetId] = useState('')
-    const [displayedTweets, setDisplayedTweets] = useState([])
+  const [tweetId, setTweetId] = useState('')
+  const [displayedTweets, setDisplayedTweets] = useState([])
 
   const handleLikeTweet = () => {
     console.log('liked')
@@ -21,26 +21,17 @@ function LastTweets(props) {
         setDisplayedTweets(data)
     })
     console.log('tweet removed')
-    }
+  }
 
-
-
-
-
-
-    return(
-        <div className={styles.tweetContainer}>
-			{/* {symbol for profiles /* <img src={props.urlToImage} className={styles.image} alt={props.title} /> */} 
-			<div className={styles.topText}>
-				<h6 className={styles.username}>User</h6>
-                <p>{props.tweet}</p>
-                <p>{props.numberOfLikes}</p>
-                <p>{props._id}</p>
-				<FontAwesomeIcon onClick={() => handleLikeTweet()} icon={faHeart}  className={styles.heartIcon} />
-                <FontAwesomeIcon onClick={() => handleDeleteTweet()} icon={faTrash}  className={styles.trashIcon} />
-			</div>
-		</div>
-    )
+  return(
+    <div className={styles.tweetContainer}>
+    {/* {symbol for profiles /* <img src={props.urlToImage} className={styles.image} alt={props.title} /> */} 
+      <h3 className={styles.username}>User</h3>
+      <p>{props.tweet}</p>
+      <FontAwesomeIcon onClick={() => handleLikeTweet()} icon={faHeart}  className={styles.heartIcon} /> {props.numberOfLikes} <br></br>
+      <FontAwesomeIcon onClick={() => handleDeleteTweet()} icon={faTrash}  className={styles.trashIcon} /> {props._id}
+    </div>
+  )
 }
 
 export default LastTweets;

@@ -1,0 +1,8 @@
+.tweetContainer{
+    color: white;
+    border-top: 1px solid dimgray;
+    padding: 16px;
+    font-size: medium;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: lighter;
+}
