@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from '../styles/Home.module.css';
 import LastTweets from './LastTweets';
 import Tweet from './Tweet';
+import Hashtags from './Hashtags';
 
 function Home() {
   
@@ -38,6 +39,7 @@ function Home() {
         
         <div className={styles.colonne}>
           <h2>Trend</h2>
+          <Hashtags />
         </div>
       </main>
     </div>
