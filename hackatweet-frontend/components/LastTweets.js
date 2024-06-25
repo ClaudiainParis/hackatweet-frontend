@@ -10,12 +10,15 @@ function LastTweets(props) {
   const [displayedTweets, setDisplayedTweets] = useState([])
 
   const handleLikeTweet = () => {
-    console.log('liked')
+    const idTweetToLike = props._id
+    fetch(`http://localhost:3000/tweets/like/${idTweetToLike}`,
+      {method: 'POST'})
+        .then(console.log('tweet like'))
   }
 
   const handleDeleteTweet = () => {
-    const tweetToRemove = props._id
-    fetch(`http://localhost:3000/tweets/${tweetToRemove}`, {
+    const idTweetToRemove = props._id
+    fetch(`http://localhost:3000/tweets/${idTweetToRemove}`, {
     method: 'DELETE'})
     .then(data => {
         setDisplayedTweets(data)
