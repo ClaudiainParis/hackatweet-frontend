@@ -1,11 +1,13 @@
-import styles from '../styles/Hashtags.module.css';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import styles from '../styles/LastTweets.module.css';
 
 function Hashtags() {
 
 
     return(
         <div className={styles.hashtagContainer}>
-            <div>Hashtag</div>
+            <div>#hashtag</div>
             <div>32</div>
         </div>
     )
