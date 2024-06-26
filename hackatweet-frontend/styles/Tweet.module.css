@@ -1,0 +1,31 @@
+.tweetSection{
+    padding: 0px 55px;
+}
+
+.sendContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: baseline;
+}
+
+.button{
+    font-weight: 700;
+    background-color: rgb(0, 154, 250);
+    color: white;
+    border-radius: 25px;
+    width: 100px;
+    height: 35px;
+    border-color: rgb(0, 154, 250) ;
+    margin-left: 15px;
+}
+
+.tweetInput{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid dimgray;
+    font-size: larger;
+    padding: 15px;
+    width: 100%;
+    margin-bottom: 15px;
+}

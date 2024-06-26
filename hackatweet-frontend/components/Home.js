@@ -20,34 +20,33 @@ function Home() {
 
   const tweetsToDisplay = lastTweets.map((data, i) => {
    return (
-    <LastTweets key={i} {...data} tweet={data.text} like= {data.numberOfLikes} id={data._id}/>
+    <LastTweets key={i} {...data} tweet={data.text} like={data.numberOfLikes} id={data._id}/>
    )
   });
 
   //Affichage des Hashtags
-  const [hashtagsList, setHashtagsList] = useState()
+  const [hashtagsList, setHashtagsList] = useState({ 'Loading': 0  })
 
   useEffect(() => {
     fetch('http://localhost:3000/tweets/hashtags')
     .then(response => response.json())
     .then(data => {
-      setHashtagsList(data.Hashtags)
+      setHashtagsList(data.hashtags)
     })
   }, []);
 
   const hashtagsToDisplay = [];
-  const testObject = {
-    key1: 'value1',
-    key2: 'value2',
-  }
-  for (let i = 0; i<Object.keys(testObject).length; i++) {
-    hashtagsToDisplay.push(<Hashtags/>)
+  for (let i = 0; i<Object.keys(hashtagsList).length; i++) {
+    hashtagsToDisplay.push(<Hashtags hashtag={Object.keys(hashtagsList)[i]} nbr={Object.values(hashtagsList)[i]}/>)
   }
   
   return (
     <div>
       <main className={styles.main}>
         <div className={styles.colonne}>
+          <p>Logo</p>
+          <p>User Info</p>
+          <button>Log out</button>
           
         </div>
 
@@ -58,7 +57,7 @@ function Home() {
         </div>
         
         <div className={styles.colonne}>
-          <h2>Trend</h2>
+          <h2>Trends</h2>
           {hashtagsToDisplay}
         </div>
       </main>

@@ -35,10 +35,14 @@ function Tweet() {
     return(
         <div className={styles.tweetContainer}>
 				<div className={styles.tweetSection}>
-					<input type="text" placeholder="What's up ?" id="tweet" maxLength='280'
-                    onChange={(e) => {setTweet(e.target.value) ; setTweetCount(tweet.length)}} value={tweet} />
-                    <p>{tweetCount}/280</p>
-					<button id="tweetButton" onClick={() => handleTweet()}>Tweet</button>
+                    <div className={styles.inputContainer}>
+                        <input className={styles.tweetInput} type="text" placeholder="What's up ?" id="tweet" maxLength='280'
+                        onChange={(e) => {setTweet(e.target.value) ; setTweetCount(tweet.length)}} value={tweet} />
+                    </div>
+                    <div className={styles.sendContainer}>
+                        <p>{tweetCount}/280</p>
+					    <button className={styles.button} id="tweetButton" onClick={() => handleTweet()}>Tweet</button>
+                    </div>
 				</div>
 			</div>
     )

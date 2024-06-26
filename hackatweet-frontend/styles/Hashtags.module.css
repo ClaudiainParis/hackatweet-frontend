@@ -1,0 +1,14 @@
+.hashtagContainer{
+    background-color: #182e3d;
+    border-radius: 0.5em;
+    padding: 10px;
+    margin-bottom: 5px ;
+}
+
+.textHashtag{
+    font-weight: 700;
+}
+
+.nbrHastag {
+    color: darkgray;
+}
