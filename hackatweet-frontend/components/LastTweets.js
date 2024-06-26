@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { addLike, removeLike } from '../reducers/tweets';
 import styles from '../styles/LastTweets.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 function LastTweets(props) {
+
+
+    const dispatch = useDispatch();
 
   const [tweetId, setTweetId] = useState('')
   const [displayedTweets, setDisplayedTweets] = useState([])
@@ -14,6 +18,7 @@ function LastTweets(props) {
     fetch(`http://localhost:3000/tweets/like/${idTweetToLike}`,
       {method: 'POST'})
         .then(console.log('tweet like'))
+        dispatch(addLike())
   }
 
   const handleDeleteTweet = () => {

@@ -1,18 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-	value: { id: ''}
+	value: 0,
 };
 
 export const tweetsSlice = createSlice({
 	name: 'tweets',
 	initialState,
 	reducers: {
-        // getTweetId: (state, action) => {
-		// 	// state.value.id = action.payload.username ;
-		// },
+        addLike: (state, action) => {
+            state.value++;
+        },
+        removeLike: (state, action) => {
+            state.value--;
+        }
 	},
 });
 
-export const {  } = tweetsSlice.actions;
+export const { addLike, removeLike } = tweetsSlice.actions;
 export default tweetsSlice.reducer;

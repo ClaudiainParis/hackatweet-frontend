@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { addLike, removeLike } from '../reducers/tweets';
 import styles from '../styles/Tweet.module.css';
 
 function Tweet() {

@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { addLike, removeLike } from '../reducers/tweets';
 import styles from '../styles/Home.module.css';
 import LastTweets from './LastTweets';
 import Tweet from './Tweet';
 import Hashtags from './Hashtags';
+import { logout } from '../reducers/users';
 
 function Home() {
   
+  const dispatch= useDispatch()
+
   //Affichage des Tweets
   const [lastTweets, setLastTweets] = useState([])
 
@@ -24,11 +28,16 @@ function Home() {
    )
   });
 
+  const handleLogOut = () =>{
+    dispatch(logout())
+    console.log('logout');
+  }
+
   return (
     <div>
       <main className={styles.main}>
         <div className={styles.colonne}>
-          
+        <button onClick={()=> handleLogOut()}>Logout</button>
         </div>
 
         <div className={styles.colonnecentre}>
