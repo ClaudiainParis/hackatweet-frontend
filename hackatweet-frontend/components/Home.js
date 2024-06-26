@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addLike, removeLike } from '../reducers/tweets';
+import { addNewTweet, removeTweet } from '../reducers/tweets';
 import styles from '../styles/Home.module.css';
 import LastTweets from './LastTweets';
 import Tweet from './Tweet';
@@ -11,8 +11,15 @@ function Home() {
   
   const dispatch= useDispatch()
 
-  //Affichage des Tweets
+  const tweets = useSelector((state) => state.tweets.value);
+  const user = useSelector((state)=> state.users.value)
+
+  // Affichage des Tweets
   const [lastTweets, setLastTweets] = useState([])
+
+  useEffect(() => {
+		setDate(new Date());
+	}, []);
 
   useEffect(() => {
     fetch('http://localhost:3000/tweets/alltweets')
@@ -27,6 +34,7 @@ function Home() {
     <LastTweets key={i} {...data} tweet={data.text} like={data.numberOfLikes} id={data._id}/>
    )
   });
+
 
   //Affichage des Hashtags
   const [hashtagsList, setHashtagsList] = useState({ 'Loading': 0  })
@@ -54,8 +62,8 @@ function Home() {
       <main className={styles.main}>
         <div className={styles.colonne}>
           <p>Logo</p>
-          <p>User Info</p>
-          <button>Log out</button>
+          <p>{user.firstname}</p>
+          <p>@{user.username}</p>
         <button onClick={()=> handleLogOut()}>Logout</button>
         </div>
 

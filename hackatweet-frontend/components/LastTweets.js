@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addLike, removeLike } from '../reducers/tweets';
+import { addNewTweet, removeTweet } from '../reducers/tweets';
 import styles from '../styles/LastTweets.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -28,6 +28,7 @@ function LastTweets(props) {
     .then(data => {
         setDisplayedTweets(data)
     })
+    dispatch(removeTweet())
     console.log('tweet removed')
   }
 

@@ -3,11 +3,11 @@ import { useRouter } from "next/router";
 import styles from "../styles/Login.module.css";
 import { login } from "../reducers/users";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter } from "@fortawesome/free-solid-svg-icons";
+import { faCross, faTwitter } from "@fortawesome/free-solid-svg-icons";
 import Moment from "react-moment";
 import { Button, Modal } from "antd";
 import "antd/dist/antd.css";
-import SignIn from "./SignIn";
+// import SignIn from "./SignIn";
 import { useDispatch } from "react-redux";
 
 function Login() {
@@ -45,7 +45,7 @@ function Login() {
         if (!data.result) {
           console.log("false");
         } else {
-          dispatch(login({ username: signInUsername }));
+          dispatch(login({ username: signInUsername,  token: data.token }));
           // setSignInfirstname('');
           setSignInUsername("");
           setSignInPassword("");
@@ -111,12 +111,12 @@ function Login() {
     setIsSignUpModalVisible(false);
   };
 
-  // const twitterIcon = <FontAwesomeIcon icon={faTwitter} />
+  const twitterIcon = <FontAwesomeIcon icon={faCross} rotation={180} style={{color: "#ffffff",}} />
   return (
     <div>
       <main className={styles.main}>
-        {/* <FontAwesomeIcon icon={faTwitter} /> */}
-        <h1 className={styles.title}>See what's</h1>
+       {twitterIcon}
+        <h1 className={styles.title}> See what's</h1>
         <h1 className={styles.title}>happening</h1>
         <h3 className={styles.h3}>Join Hackatweet today.</h3>
        
@@ -134,7 +134,7 @@ function Login() {
               key="submit"
               type="primary"
               loading={signInLoading}
-              onClick={() => handleConnection()}
+              onClick={handleConnection}
             >
               Sign in
             </Button>,
@@ -173,7 +173,7 @@ function Login() {
               key="submit"
               type="primary"
               loading={signUpLoading}
-              onClick= {handleSignUp() }
+              onClick= {handleSignUp}
             >
               Sign up
             </Button>,

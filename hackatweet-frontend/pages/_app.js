@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import users from '../reducers/users';
 import tweets from '../reducers/tweets';
-// import tweets from '../reducers/tweets';
+
 
 const store = configureStore({
   reducer: { users, tweets },
