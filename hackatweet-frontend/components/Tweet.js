@@ -6,7 +6,7 @@ import styles from '../styles/Tweet.module.css';
 function Tweet() {
 
     const [tweet, setTweet] = useState('')
-    const [tweetCount, setTweetCount] = useState(0);
+    // const [tweetCount, setTweetCount] = useState(0);
 
    
 
@@ -21,12 +21,12 @@ function Tweet() {
 			.then(data => {
                 console.log(data)
                 console.log(tweet)
-                console.log(tweet.length)
+                // console.log(tweet.length)
 				if (!data.result) {
                     console.log('write a tweet')
                 } else {
 					setTweet('');
-                    setTweetCount(0)
+                    // setTweetCount(0)
                 }
 				}
 			);
@@ -38,10 +38,10 @@ function Tweet() {
 				<div className={styles.tweetSection}>
                     <div className={styles.inputContainer}>
                         <input className={styles.tweetInput} type="text" placeholder="What's up ?" id="tweet" maxLength='280'
-                        onChange={(e) => {setTweet(e.target.value) ; setTweetCount(tweet.length)}} value={tweet} />
+                        onChange={(e) => {setTweet(e.target.value)}} value={tweet} />
                     </div>
                     <div className={styles.sendContainer}>
-                        <p>{tweetCount}/280</p>
+                        <p>{tweet.length}/280</p>
 					    <button className={styles.button} id="tweetButton" onClick={() => handleTweet()}>Tweet</button>
                     </div>
 				</div>

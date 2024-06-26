@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Modal } from 'antd';
 import { login } from '../reducers/users';
@@ -9,6 +10,8 @@ import 'antd/dist/antd.css';
 
 function ModalTest(){
 
+
+    const router = useRouter();
 
     const dispatch = useDispatch();
 	// const users = useSelector((state) => state.users.value);
@@ -35,6 +38,7 @@ function ModalTest(){
 					dispatch(login({username: signInUsername}));
 					setSignInUsername('');
 					setSignInPassword('');
+                    router.push('/');
                 }
                 console.log('button signin clicked')
 				}
