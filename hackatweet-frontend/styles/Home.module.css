@@ -3,16 +3,20 @@
   flex-direction: row;
   background-color: #0D1A22;
   color: white;
+  height: 100vh;
 }
 
 .colonne {
   width: 20%;
+  padding: 15px;
 }
 
 .colonnecentre {
   width: 60%;
   border-right: 1px solid dimgray;
   border-left: 1px solid dimgray;
+  overflow-y: scroll;
+  
 }
 
 .title {
