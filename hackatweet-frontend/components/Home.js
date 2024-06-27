@@ -18,10 +18,6 @@ function Home() {
   const [lastTweets, setLastTweets] = useState([])
 
   useEffect(() => {
-		setDate(new Date());
-	}, []);
-
-  useEffect(() => {
     fetch('http://localhost:3000/tweets/alltweets')
       .then(response => response.json())
       .then(data => {
