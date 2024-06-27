@@ -8,3 +8,58 @@ body {
 * {
   box-sizing: border-box;
 }
+
+
+.signInModal .ant-modal .ant-modal-body {
+  background-color: rgb(4, 4, 35);
+  padding: 20px;
+}
+
+.ant-modal .ant-modal-content {
+  background-color: rgb(4, 4, 35);
+  border-radius: 20px;
+  border: none;
+}
+
+.ant-modal .ant-modal-header {
+  background-color:rgb(4, 4, 35);
+  border-bottom: none;
+  padding: 0;
+}
+
+.ant-modal .anticon {
+  color: #ffffff;
+}
+
+.ant-modal .ant-modal-title {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+input{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  background-color: rgb(4, 4, 35);
+  color: rgb(6, 153, 238);
+  padding-right:  60px;
+  padding-left:  60px!;
+  padding-top:  10px;
+  padding-bottom:  10px;
+  border-color: white;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+#connection {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: white;
+  color: rgb(4, 4, 35);
+  padding-right:  100px;
+  padding-left:  100px;
+  padding-top:  10px;
+  padding-bottom:  10px;
+  border-radius: 25px;
+  margin-top: 20px;
+}

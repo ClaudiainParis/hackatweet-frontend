@@ -1,31 +1,40 @@
+import React from "react";
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addNewTweet, removeTweet } from '../reducers/tweets';
+import { initialiseTweets, addNewTweet } from '../reducers/tweets';
 import styles from '../styles/Home.module.css';
 import LastTweets from './LastTweets';
 import Tweet from './Tweet';
 import Hashtags from './Hashtags';
 import { logout } from '../reducers/users';
+import Image from "next/image";
+import Link from 'next/link';
 
 function Home() {
   
   const dispatch= useDispatch()
 
+
+
   const tweets = useSelector((state) => state.tweets.value);
   const user = useSelector((state)=> state.users.value)
+  console.log('This is my tweet', tweets)
 
   // Affichage des Tweets
-  const [lastTweets, setLastTweets] = useState([])
+  // const [lastTweets, setLastTweets] = useState([])
+  const [newTweet, setNewTweet] = useState('')
 
   useEffect(() => {
+
     fetch('http://localhost:3000/tweets/alltweets')
       .then(response => response.json())
       .then(data => {
-        setLastTweets(data.alltweets)
+        dispatch(initialiseTweets(data.alltweets));
       })
   }, [])
 
-  const tweetsToDisplay = lastTweets.map((data, i) => {
+ 
+  const tweetsToDisplay = tweets.map((data, i) => {
    return (
     <LastTweets key={i} {...data} tweet={data.text} like={data.numberOfLikes} id={data._id}/>
    )
@@ -57,20 +66,23 @@ function Home() {
     <div>
       <main className={styles.main}>
         <div className={styles.colonne}>
-          <p>Logo</p>
+        <Image src="/twitter-2.svg" alt="Twitter-reversed" width={70} height={70} className={styles.twitterLogo}/>
+        <Image src="/egg-flat.svg" alt="User Logo" width={70} height={70} className={styles.userLogo}/>
           <p>{user.firstname}</p>
           <p>@{user.username}</p>
-        <button onClick={()=> handleLogOut()}>Logout</button>
+        <button className={styles.logoutButton} onClick={()=> handleLogOut()}>Logout</button>
         </div>
 
         <div className={styles.colonnecentre}>
-          <h2>Home</h2>
+          <span className={styles.hometitle}>Home</span>
           <Tweet />
+
           <h1 className={styles.title}>{tweetsToDisplay}</h1>
         </div>
         
         <div className={styles.colonne}>
-          <h2>Trends</h2>
+        <Link  href="/trendspage" ><span classname={styles.trendslink}>Trends</span></Link>
+        
           {hashtagsToDisplay}
         </div>
       </main>

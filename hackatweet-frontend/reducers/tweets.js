@@ -1,34 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-	value: [],
+	value: []
 };
 
 export const tweetsSlice = createSlice({
 	name: 'tweets',
 	initialState,
 	reducers: {
-        // displayTweets: (state, action) => {
-        //         fetch('http://localhost:3000/tweets/alltweets')
-        //           .then(response => response.json())
-        //           .then(data => {
-        //             setLastTweets(data.alltweets)
-        //           })
-        // },
         addNewTweet: (state, action) => {
-			// state.value.text.push(action.payload.text);
+			state.value.push(action.payload);
 		},
+        initialiseTweets: (state, action) =>{
+            state.value=action.payload
+        },
         removeTweet: (state, action) => {
             state.value = state.value.filter(tweet => tweet.text !== action.payload.text);
+        },
+        addLike: (state, action) => {
+            state.value++;
+        },
+        removeLike: (state, action) => {
+            state.value--;
         }
-        // addLike: (state, action) => {
-        //     state.value++;
-        // },
-        // removeLike: (state, action) => {
-        //     state.value--;
-        // }
 }
 });
 
-export const { addNewTweet, removeTweet } = tweetsSlice.actions;
+export const { addNewTweet, removeTweet, initialiseTweets } = tweetsSlice.actions;
 export default tweetsSlice.reducer;

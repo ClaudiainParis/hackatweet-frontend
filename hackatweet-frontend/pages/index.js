@@ -6,7 +6,8 @@ import Home from '../components/Home';
 // import Tweet from '../components/Tweet';
 // import LastTweets from '../components/LastTweets';
 import { login, logout} from '../reducers/users'
-import Trends from '../components/Trends';
+import Trend from '../components/Trend';
+import SignIn from '../components/SignIn';
 
 function Index() {
 

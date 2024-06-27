@@ -7,11 +7,16 @@
 }
 
 .colonne {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   width: 20%;
   padding: 15px;
+  color: white;
 }
 
 .colonnecentre {
+  color: white;
   width: 60%;
   border-right: 1px solid dimgray;
   border-left: 1px solid dimgray;
@@ -20,6 +25,7 @@
 }
 
 .title {
+  color: white;
   line-height: 1.15;
   font-size: 4rem;
 }
@@ -31,4 +37,42 @@
 
 .title a:hover, .title a:focus, .title a:active {
   text-decoration: underline;
+}
+
+
+.twitterLogo {
+  transform: rotate(180deg);
+}
+
+.h2{
+  color: white;
+}
+
+.logoutButton {
+  align-self: baseline;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #0D1A22;
+  color: dimgray;
+  padding-right:  25px;
+  padding-left:  25px;
+  padding-top:  8px;
+  padding-bottom:  8px;
+  border-color: 1px solid dimgray;
+  border-radius: 25px;
+}
+
+.userLogo {
+  margin-top: 600px;
+}
+
+.trendslink{
+  font-size: 100px!important;
+  font-weight: bolder;
+  color: white;
+}
+
+.hometitle{
+  font-size: 20px;
+  font-weight: bolder;
+  color: white
 }

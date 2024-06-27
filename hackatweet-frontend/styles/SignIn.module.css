@@ -1,0 +1,19 @@
+.registerContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(4, 4, 35);
+    color: white;
+    font-size: medium;
+}
+
+.registerSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.twitterLogo {
+    transform: rotate(180deg);
+  }

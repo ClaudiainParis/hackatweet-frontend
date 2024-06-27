@@ -18,7 +18,7 @@ function LastTweets(props) {
     fetch(`http://localhost:3000/tweets/like/${idTweetToLike}`,
       {method: 'POST'})
         .then(console.log('tweet like'))
-        dispatch(addLike())
+        // dispatch(addLike())
   }
 
   const handleDeleteTweet = () => {
