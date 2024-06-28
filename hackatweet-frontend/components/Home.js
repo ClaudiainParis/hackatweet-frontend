@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { initialiseTweets, addNewTweet } from "../reducers/tweets";
+import { addHashtags } from "../reducers/hashtags";
 import styles from "../styles/Home.module.css";
 import LastTweets from "./LastTweets";
 import Tweet from "./Tweet";
@@ -15,10 +16,9 @@ function Home() {
 
   const tweets = useSelector((state) => state.tweets.value);
   const user = useSelector((state) => state.users.value);
-  // console.log("This is my tweet", tweets);
+  const hashtags = useSelector((state) => state.hashtags.value);
 
   // Affichage des Tweets
-  // const [lastTweets, setLastTweets] = useState([])
   const [newTweet, setNewTweet] = useState("");
 
   useEffect(() => {
@@ -26,6 +26,7 @@ function Home() {
       .then((response) => response.json())
       .then((data) => {
         dispatch(initialiseTweets(data.alltweets));
+        dispatch(addHashtags(data.hashtags))
       });
   }, []);
 
@@ -55,6 +56,7 @@ function Home() {
       .then((response) => response.json())
       .then((data) => {
         setHashtagsList(data.hashtags);
+        // dispatch(initialiseHashtags(data.hashtags))
       });
   }, []);
 

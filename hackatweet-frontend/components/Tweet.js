@@ -18,7 +18,7 @@ function Tweet() {
         fetch('http://localhost:3000/tweets/newtweet', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({tweet : tweet, token : token }),
+			body: JSON.stringify({tweet : tweet, token : token, username: user.username }),
 		}).then(response => response.json())
 			.then(data => {
                 console.log('mydata', data)

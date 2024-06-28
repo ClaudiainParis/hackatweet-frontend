@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addNewTweet, removeTweet } from '../reducers/tweets';
+import { addNewTweet, removeTweet, addLike } from '../reducers/tweets';
 import styles from '../styles/LastTweets.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -8,22 +8,34 @@ import Image from "next/image";
 
 function LastTweets(props) {
 
-
     const dispatch = useDispatch();
+    const loggedUser = useSelector((state) => state.users.value);
+    const tweet = useSelector((state)=> state.tweets.value)
 
   const [tweetId, setTweetId] = useState('')
   const [displayedTweets, setDisplayedTweets] = useState([])
+  const [liked, setLiked] = useState(false)
 
-  const loggedUser = useSelector((state) => state.users.value);
-  const loggedUserToken = loggedUser.token
+    console.log("tweet", props.username)
+    console.log(loggedUser.username)
+
+  const loggedUsername = loggedUser.username
 
   const handleLikeTweet = () => {
     const idTweetToLike = props._id
     fetch(`http://localhost:3000/tweets/like/${idTweetToLike}`,
       {method: 'POST'})
-        .then(console.log('tweet like'))
-        // dispatch(addLike())
-  }
+			.then(response => response.json())
+			.then(data => {
+        console.log(data)
+			setLiked(true)
+			});
+  };
+
+  let iconStyle = {};
+	if (liked) {
+		iconStyle = { 'color': '#E9BE59' };
+	}
 
   const handleDeleteTweet = () => {
     const idTweetToRemove = props._id
@@ -35,16 +47,19 @@ function LastTweets(props) {
     dispatch(removeTweet())
     console.log('tweet removed')
   }
+
   let likeAndDelete;
-  if(!users.token){
-    likeAndDelete=
+  if(loggedUser){
+    likeAndDelete= 
     <div>
-      <FontAwesomeIcon onClick={() => handleLikeTweet()} icon={faHeart}  className={styles.heartIcon} /> {props.numberOfLikes} <br></br>
-      <FontAwesomeIcon onClick={() => handleDeleteTweet()} icon={faTrash}  className={styles.trashIcon} /> {props._id}
+      <FontAwesomeIcon onClick={() => handleLikeTweet()} icon={faHeart}  style={iconStyle} /> {props.numberOfLikes} <br></br>
+      <FontAwesomeIcon onClick={() => handleDeleteTweet()} icon={faTrash}  className={styles.trashIcon} /> {props.username}
     </div>
   } else {
     likeAndDelete=
+      <div>
     <FontAwesomeIcon onClick={() => handleLikeTweet()} icon={faHeart}  className={styles.heartIcon} /> {props.numberOfLikes}
+    </div>
   }
 
   return(
