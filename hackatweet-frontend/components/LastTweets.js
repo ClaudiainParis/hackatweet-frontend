@@ -4,6 +4,7 @@ import { addNewTweet, removeTweet } from '../reducers/tweets';
 import styles from '../styles/LastTweets.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
+import Image from "next/image";
 
 function LastTweets(props) {
 
@@ -12,6 +13,9 @@ function LastTweets(props) {
 
   const [tweetId, setTweetId] = useState('')
   const [displayedTweets, setDisplayedTweets] = useState([])
+
+  const loggedUser = useSelector((state) => state.users.value);
+  const loggedUserToken = loggedUser.token
 
   const handleLikeTweet = () => {
     const idTweetToLike = props._id
@@ -34,8 +38,17 @@ function LastTweets(props) {
 
   return(
     <div className={styles.tweetContainer}>
-    {/* {symbol for profiles /* <img src={props.urlToImage} className={styles.image} alt={props.title} /> */} 
-      <h3 className={styles.username}>User</h3>
+      <div className={styles.userContainer}>
+   <Image
+            src="/egg-flat.svg"
+            alt="User Logo"
+            width={70}
+            height={70}
+            className={styles.userLogo}
+          />
+      {/* <h3 className={styles.username}>Username</h3> */}
+      {/* <h3 className={styles.username}>Username</h3> */}
+      </div>
       <p>{props.tweet}</p>
       <FontAwesomeIcon onClick={() => handleLikeTweet()} icon={faHeart}  className={styles.heartIcon} /> {props.numberOfLikes} <br></br>
       <FontAwesomeIcon onClick={() => handleDeleteTweet()} icon={faTrash}  className={styles.trashIcon} /> {props._id}

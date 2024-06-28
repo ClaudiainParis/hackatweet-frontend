@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addNewTweet, removeLike } from '../reducers/tweets';
+import { addNewTweet, removeLike, initialiseTweets } from '../reducers/tweets';
 import styles from '../styles/Tweet.module.css';
 
 function Tweet() {
@@ -9,27 +9,24 @@ function Tweet() {
     const dispatch = useDispatch();
   
 
-    // const user = useSelector((state)=> state.users.value)
+    const user = useSelector((state)=> state.users.value)
 
     const [tweet, setTweet] = useState('')
-
+    const token = user.token
 
     const handleTweet = () => {
         fetch('http://localhost:3000/tweets/newtweet', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({tweet : tweet }),
+			body: JSON.stringify({tweet : tweet, token : token }),
 		}).then(response => response.json())
 			.then(data => {
-                console.log(data)
-                console.log(tweet)
-                // console.log(tweet.length)
+                console.log('mydata', data)
 				if (!data.result) {
                     console.log('write a tweet')
                 } else {
 					setTweet('');
-                    dispatch(addNewTweet(data.tweet))
-                    // setTweetCount(0)
+                    dispatch(initialiseTweets(data.tweet))
                 }
 				}
 			);

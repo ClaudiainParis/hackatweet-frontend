@@ -76,3 +76,8 @@
   font-weight: bolder;
   color: white
 }
+
+.displayedtweets{
+  display: flex;
+  flex-direction: column-reverse;
+}
