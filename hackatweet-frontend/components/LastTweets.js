@@ -35,6 +35,17 @@ function LastTweets(props) {
     dispatch(removeTweet())
     console.log('tweet removed')
   }
+  let likeAndDelete;
+  if(!users.token){
+    likeAndDelete=
+    <div>
+      <FontAwesomeIcon onClick={() => handleLikeTweet()} icon={faHeart}  className={styles.heartIcon} /> {props.numberOfLikes} <br></br>
+      <FontAwesomeIcon onClick={() => handleDeleteTweet()} icon={faTrash}  className={styles.trashIcon} /> {props._id}
+    </div>
+  } else {
+    likeAndDelete=
+    <FontAwesomeIcon onClick={() => handleLikeTweet()} icon={faHeart}  className={styles.heartIcon} /> {props.numberOfLikes}
+  }
 
   return(
     <div className={styles.tweetContainer}>
@@ -50,8 +61,7 @@ function LastTweets(props) {
       {/* <h3 className={styles.username}>Username</h3> */}
       </div>
       <p>{props.tweet}</p>
-      <FontAwesomeIcon onClick={() => handleLikeTweet()} icon={faHeart}  className={styles.heartIcon} /> {props.numberOfLikes} <br></br>
-      <FontAwesomeIcon onClick={() => handleDeleteTweet()} icon={faTrash}  className={styles.trashIcon} /> {props._id}
+      {likeAndDelete}
     </div>
   )
 }
